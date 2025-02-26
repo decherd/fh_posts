@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "fh_posts"
+  site-url: "https://decherd.github.io/fh_posts"
+  description: "Turn Markdown and Jupyter Notebooks into dynamic FastHTML posts with smart YAML parsing and live Python execution."
+  repo-branch: main
+  repo-url: "https://github.com/decherd/fh_posts"
