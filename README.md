@@ -138,6 +138,3 @@ print("Notebook live output")
 
 Contributions are welcome! Please open an issue or submit a pull request
 to help improve fh_posts.
-
-With fh_posts, transform your static files into dynamic FastHTML posts
-effortlessly!

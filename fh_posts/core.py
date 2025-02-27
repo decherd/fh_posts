@@ -394,7 +394,10 @@ def render_markdown_post(
     return NotStr(html_content)
 
 # %% ../nbs/00_core.ipynb 39
-def render_notebook_post(post: Post, open_links_new_window: bool = False, live_label: bool = True) -> NotStr:
+def render_notebook_post(
+        post: Post, # The post to render
+        open_links_new_window: bool = False, 
+        live_label: bool = True) -> NotStr:
     """Render a Jupyter Notebook post with code execution."""
     # Load the notebook
     notebook = nbformat.read(post.path, as_version=4)
