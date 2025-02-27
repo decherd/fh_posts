@@ -32,6 +32,9 @@ pip install fh-posts
 
 # Usage
 
+Learn more about the package in the
+[documentation](https://decherd.github.io/fh_posts/).
+
 You can import the package in two ways:
 
 ``` python
@@ -108,7 +111,8 @@ html_output = post.render(open_links_new_window=True)
 print(html_output)
 ```
 
-![Screenshot of rendered markdown post](./images/md_render.png)
+![Screenshot of rendered markdown
+post](https://raw.githubusercontent.com/decherd/fh_posts/refs/heads/main/nbs/images/md_render.png)
 
 ## Example: Jupyter Notebook Posts
 
