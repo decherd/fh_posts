@@ -10,16 +10,14 @@ __all__ = ['logger', 'Post', 'extract_frontmatter', 'extract_notebook_frontmatte
 from pathlib import Path
 import yaml
 from fastcore.basics import AttrDict
-from fastcore.foundation import add_docs
 from fasthtml.common import to_xml, NotStr
 from monsterui.all import *
 import nbformat
-from nbconvert.preprocessors import ExecutePreprocessor
 import re
 from bs4 import BeautifulSoup
 import io
 import sys
-from typing import List, Dict, Union, Optional, Callable
+from typing import List, Dict, Optional
 import logging
 from datetime import datetime
 from fastcore.test import *
