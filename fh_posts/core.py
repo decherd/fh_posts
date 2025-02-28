@@ -446,6 +446,7 @@ def render_notebook_post(
                 processed_parts.append(result['code_html'])
             
             if tag_props['run'] and result['show_output'] and result['output_html']:
+                processed_parts.append('<div class="mb-4"></div>')
                 processed_parts.append(result['output_html'])
                 if live_label:
                     processed_parts.append('<div class="text-gray-400 text-sm mt-2 italic">↑ Live rendered output</div>')

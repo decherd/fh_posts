@@ -55,7 +55,7 @@ to those who have used jupyter notebooks.
 
 - `python` (default) - output the code but don’t run it
 - `python:run` - run and show the code and the output
-- `python:run:hide` - run the code but don’t the code or output
+- `python:run:hide` - run the code but don’t show the code or output
 - `python:run:hide-in` - run the code but don’t show the code block,
   only the output
 - `python:run:hide-out` - run the code and show the output but don’t
