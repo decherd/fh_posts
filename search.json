@@ -1,0 +1,140 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "fh_posts",
+    "section": "",
+    "text": "fh_posts is a Python package that transforms your Markdown and Jupyter Notebook blog posts into dynamic FastHTML content. It extracts YAML front matter using fastcore’s AttrDict for seamless metadata access and executes custom-tagged Python code blocks to render interactive posts.",
+    "crumbs": [
+      "fh_posts"
+    ]
+  },
+  {
+    "objectID": "index.html#import-the-package",
+    "href": "index.html#import-the-package",
+    "title": "fh_posts",
+    "section": "Import the package:",
+    "text": "Import the package:\nfrom fh_posts.core import load_posts",
+    "crumbs": [
+      "fh_posts"
+    ]
+  },
+  {
+    "objectID": "index.html#tag-your-code-blocks-explained-below",
+    "href": "index.html#tag-your-code-blocks-explained-below",
+    "title": "fh_posts",
+    "section": "Tag your code blocks (explained below):",
+    "text": "Tag your code blocks (explained below):\n```python:run\nprint(\"Hello, world!\")\n```",
+    "crumbs": [
+      "fh_posts"
+    ]
+  },
+  {
+    "objectID": "index.html#load-the-posts-and-render-them",
+    "href": "index.html#load-the-posts-and-render-them",
+    "title": "fh_posts",
+    "section": "Load the posts and render them:",
+    "text": "Load the posts and render them:\n# Load posts from the 'posts' directory\nposts = load_posts('posts')\n\n# Access metadata\nfor post in posts:\n    print(post.title, post.date)\n\n# Render a post by its slug\npost = next(p for p in posts if p.slug == 'hello')\nhtml_output = post.render(open_links_new_window=True)\nprint(html_output)",
+    "crumbs": [
+      "fh_posts"
+    ]
+  },
+  {
+    "objectID": "index.html#tags",
+    "href": "index.html#tags",
+    "title": "fh_posts",
+    "section": "Tags",
+    "text": "Tags\nIn a markdown file when you add a code block with triple backticks and python, append additional colon seperated tags to control how the code is run and rendered. All run code blocks will be executed in order and be in the namespace for the rest of the post. This should feel familiar to those who have used jupyter notebooks.\n\npython (default) - output the code but don’t run it\npython:run - run and show the code and the output\npython:run:hide - run the code but don’t show the code or output\npython:run:hide-in - run the code but don’t show the code block, only the output\npython:run:hide-out - run the code and show the output but don’t show the code block\npython:run:hide-call - run the code and show the output and the code block but don’t show the call to the function (last line of code)\n\nIn a notebook file all code cells are run by default. Add a #|python tag to the first line of any code cell to also have it appear as a code block in the post. All of the other tags for markdown posts apply to notebook posts as well. Having to add run each time is redundant since all cells are run but it keeps things consistent between markdown and notebook posts.",
+    "crumbs": [
+      "fh_posts"
+    ]
+  },
+  {
+    "objectID": "index.html#example-markdown-posts",
+    "href": "index.html#example-markdown-posts",
+    "title": "fh_posts",
+    "section": "Example: Markdown Posts",
+    "text": "Example: Markdown Posts\nMarkdown File (hello.md):\n---\ntitle: Hello FastHTML and MonsterUI\nsummary: An introduction to FastHTML and MonsterUI.\ndate: February 25, 2025\ntags:\n  - python\n  - fasthtml\n  - monsterui\n---\n\nWelcome to our blog post!\n\n```python:run\nprint(\"Hello, world!\")\n```\n\nLoading & Rendering:\nfrom fh_posts.core import load_posts\n\n# Load posts from the 'posts' directory\nposts = load_posts('posts')\n\n# Access metadata\nfor post in posts:\n    print(post.title, post.date)\n\n# Render a post by its slug\npost = next(p for p in posts if p.slug == 'hello')\nhtml_output = post.render(open_links_new_window=True)\nprint(html_output)\n\n\n\nScreenshot of rendered markdown post",
+    "crumbs": [
+      "fh_posts"
+    ]
+  },
+  {
+    "objectID": "index.html#example-jupyter-notebook-posts",
+    "href": "index.html#example-jupyter-notebook-posts",
+    "title": "fh_posts",
+    "section": "Example: Jupyter Notebook Posts",
+    "text": "Example: Jupyter Notebook Posts\nNotebook File (notebook_post.ipynb):\n\nCell 1 (Raw Cell with YAML Front Matter):\n\n---\ntitle: Notebook Post Example\nsummary: A demonstration of a notebook-based blog post.\ndate: March 1, 2025\ntags:\n  - jupyter\n  - python\n---",
+    "crumbs": [
+      "fh_posts"
+    ]
+  },
+  {
+    "objectID": "index.html#code-cell-example",
+    "href": "index.html#code-cell-example",
+    "title": "fh_posts",
+    "section": "Code Cell Example:",
+    "text": "Code Cell Example:\n#|python:run:hide-in\nprint(\"Notebook live output\")",
+    "crumbs": [
+      "fh_posts"
+    ]
+  },
+  {
+    "objectID": "posts/md_test.html",
+    "href": "posts/md_test.html",
+    "title": "MD Test",
+    "section": "",
+    "text": "MD Test\nThis is a test of a .md file. https://www.example.com\na = 5\n\n\nShow code block and the output\n# Show code block and the output\ndef add_number(x, y):\n    return x + y\nprint(f\"a is {a}\")\nadd_number(a, 1)\n\n\nShow the code and don’t run it\n# Show the code and don't run it.\nprint(f\"The result of adding two to {a} is {add_number(a, 2)}\")\nadd_number(a, 2)\n\n\nDon’t show code block but show the output\n# Don't show code block but show the output\nprint(f\"The result of adding three to {a} is {add_number(a, 3)}\")\nadd_number(a, 3)\n\n\nShow code block but don’t show the output\n# Show code block but don't show the output\nprint(f\"The result of adding four to {a} is {add_number(a, 4)}\")\nadd_number(a, 4)\n\n\nShow code block with the last line (function call shown) and the output\n# Show code block but hide the last line (function call) and show the output\nprint(f\"The result of adding five to {a} is {add_number(a, 5)}\")\nadd_number(a, 6)"
+  },
+  {
+    "objectID": "core.html",
+    "href": "core.html",
+    "title": "Core Functionality",
+    "section": "",
+    "text": "source\n\n\n\n Post (path:pathlib.Path, metadata:fastcore.basics.AttrDict, slug:str)\n\nRepresents a blog post with its metadata and content. This class provides methods to render the post content with optional code execution and formatting options.\n\n\n\n\nType\nDetails\n\n\n\n\npath\nPath\nThe path to the post\n\n\nmetadata\nAttrDict\nThe metadata for the post\n\n\nslug\nstr\nThe slug for the post\n\n\n\n\nsource\n\n\n\n\n Post.render (open_links_new_window:bool=False, live_label:bool=True)\n\nRender the post content with code execution as specified by tags.\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\nopen_links_new_window\nbool\nFalse\nWhether to open links in a new window\n\n\nlive_label\nbool\nTrue\nWhether to show the live label\n\n\nReturns\nNotStr",
+    "crumbs": [
+      "Core Functionality"
+    ]
+  },
+  {
+    "objectID": "core.html#post-class",
+    "href": "core.html#post-class",
+    "title": "Core Functionality",
+    "section": "",
+    "text": "source\n\n\n\n Post (path:pathlib.Path, metadata:fastcore.basics.AttrDict, slug:str)\n\nRepresents a blog post with its metadata and content. This class provides methods to render the post content with optional code execution and formatting options.\n\n\n\n\nType\nDetails\n\n\n\n\npath\nPath\nThe path to the post\n\n\nmetadata\nAttrDict\nThe metadata for the post\n\n\nslug\nstr\nThe slug for the post\n\n\n\n\nsource\n\n\n\n\n Post.render (open_links_new_window:bool=False, live_label:bool=True)\n\nRender the post content with code execution as specified by tags.\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\nopen_links_new_window\nbool\nFalse\nWhether to open links in a new window\n\n\nlive_label\nbool\nTrue\nWhether to show the live label\n\n\nReturns\nNotStr",
+    "crumbs": [
+      "Core Functionality"
+    ]
+  },
+  {
+    "objectID": "core.html#front-matter",
+    "href": "core.html#front-matter",
+    "title": "Core Functionality",
+    "section": "Front Matter",
+    "text": "Front Matter\nFront matter is the metadata that is stored in the file before the content. In a notebook, it is the YAML frontmatter that is stored in the first cell as a raw cell. In a markdown file, it is the YAML frontmatter that is stored in the file before the content.\nThe extract_frontmatter function is used to extract the frontmatter from a file.\nThe extract_notebook_frontmatter function is used to extract the frontmatter from a notebook.\nSample front matter:\n---\ntitle: WorldTest\nsummary: A test of a .md file\ndate: February 25, 2025\ntags:\n  - python\n  - fasthtml\n  - monsterui\n---\n\nsource\n\nextract_frontmatter\n\n extract_frontmatter (file_path:pathlib.Path)\n\nExtract YAML frontmatter from a Markdown file.\n\n\n\n\n\n\n\n\n\nType\nDetails\n\n\n\n\nfile_path\nPath\nThe path to the file to extract the frontmatter from\n\n\nReturns\nAttrDict\n\n\n\n\n\nmd_path = Path('posts/md_test.md')\nmd_metadata = extract_frontmatter(md_path)\nmd_metadata\n\n{ 'date': 'February 25, 2025',\n  'summary': 'A test of a .md file',\n  'tags': ['python', 'fasthtml', 'monsterui'],\n  'title': 'MD Test'}\n\n\nBecause extract_frontmatter returns an AttrDict, you can access the metadata using keys or attributes.\n\ntest_eq(md_metadata['date'], 'February 25, 2025')\ntest_eq(md_metadata.date, 'February 25, 2025')\nassert isinstance(md_metadata.tags, list)\n\n\nsource\n\n\nextract_notebook_frontmatter\n\n extract_notebook_frontmatter (file_path:pathlib.Path)\n\nExtract YAML frontmatter from a Jupyter Notebook file.\n\n\n\n\n\n\n\n\n\nType\nDetails\n\n\n\n\nfile_path\nPath\nThe path to the notebook to extract the frontmatter from\n\n\nReturns\nAttrDict\n\n\n\n\n\nnb_path = Path('posts/nb_test.ipynb')\nnb_metadata = extract_notebook_frontmatter(nb_path)\nnb_metadata\n\n{ 'date': 'February 24, 2025',\n  'summary': 'A test of an .ipynb file',\n  'tags': ['python', 'fasthtml', 'monsterui'],\n  'title': 'NB Test'}\n\n\n\ntest_eq(nb_metadata['title'], 'NB Test')\ntest_eq(nb_metadata.summary, 'A test of an .ipynb file')\n\nOnce we have the metadata, we can create a Post object and test that we can access the metadata using keys or attributes.\n\nmd_post = Post(md_path, md_metadata, 'world')\nnb_post = Post(nb_path, nb_metadata, 'hello')\ntest_eq(md_post['date'], 'February 25, 2025')\ntest_eq(nb_post.date, 'February 24, 2025')\nassert isinstance(md_post.tags, list)\n\n\nsource\n\n\nget_post_date\n\n get_post_date (post, date_format='%B %d, %Y')\n\nExtract date from post for sorting.\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\npost\n\n\nThe post to get the date from\n\n\ndate_format\nstr\n%B %d, %Y\nThe format string for the date i.e. “January 01, 2025”\n\n\nReturns\ndatetime\n\n\n\n\n\n\ntest_eq(get_post_date(md_post), datetime.strptime('February 25, 2025', \"%B %d, %Y\"))\ntest_eq(get_post_date(nb_post), datetime.strptime('February 24, 2025', \"%B %d, %Y\"))\n\n\nsource\n\n\nload_posts\n\n load_posts (path:str|pathlib.Path, date_format:str='%B %d, %Y')\n\nLoad all posts from the specified directory. Extracts frontmatter from markdown files and notebooks with extract_frontmatter and extract_notebook_frontmatter respectively. Specify optional date format string for get_post_date to sort posts by date.\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\npath\nstr | pathlib.Path\n\nThe path to the directory containing the posts\n\n\ndate_format\nstr\n%B %d, %Y\nThe format string for the date i.e. “January 01, 2025”\n\n\nReturns\nList\n\n\n\n\n\nPosts are loaded and sorted by date in reverse order so newest post come first.\n\nposts = load_posts('posts')\nposts\n\n[Post(slug='md_test', title='MD Test', path='posts/md_test.md'),\n Post(slug='nb_test', title='NB Test', path='posts/nb_test.ipynb')]\n\n\n\nprint([post.date for post in posts])\n\n['February 25, 2025', 'February 24, 2025']\n\n\n\ntest_eq(posts[0].date, 'February 25, 2025')",
+    "crumbs": [
+      "Core Functionality"
+    ]
+  },
+  {
+    "objectID": "core.html#helper-functions",
+    "href": "core.html#helper-functions",
+    "title": "Core Functionality",
+    "section": "Helper Functions",
+    "text": "Helper Functions\n\nsource\n\nparse_tag\n\n parse_tag (tag_str:str)\n\nParse a tag string into a dict of tag properties e.g., ‘python:run:hide-in’.\n\ntags = 'python:run:hide'\nprocessed_tags = parse_tag(tags)\nprocessed_tags\n\n{'run': True, 'hide_in': True, 'hide_out': True, 'hide_call': False}\n\n\nparse_tag parses the tag that is used to control the execution of the code in the notebook and markdown files. The tag is a string that contains the tag name and optional properties separated by colons. In markdown files the tag follows the triple backticks that start the code block and in notebooks the tag is the first line of the code block and is prefixed with #|. The properties are:\nrun: Whether to run the code\nhide_in: Whether to hide the input code\nhide_out: Whether to hide the output\nhide_call: Whether to hide the final call line\nThe tag is used in the markdown and notebook files to control the execution of the code.\n\nsource\n\n\nexecute_code\n\n execute_code (code:str, namespace:Optional[Dict]=None)\n\nExecute Python code and return the execution result.\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\ncode\nstr\n\nThe code to execute\n\n\nnamespace\nOptional\nNone\nOptional namespace to use for execution\n\n\nReturns\nDict\n\nReturns a dict with keys: output (captured stdout), error (captured stderr), result (last expression result), namespace (updated namespace)\n\n\n\n\ncode_samp = \"\"\"\ndef greeting(name):\n    print(f\"Debug: Function called with name: {name}\")\n    return f\"Hello, {name}!\"\n\ngreeting(\"Alice\")\"\"\"\n\n\ntest_eq(execute_code(code_samp)['result'], \"Hello, Alice!\")\nassert execute_code(code_samp)['output'].startswith(\"Debug:\")\n\nThe output is captured from the stdout and stderr streams and would be what is printed to the console. The result is the value of the last expression in the code. Note that in a notebook environment the output can be captured twice but this doesn’t happen at run time.\n\nsource\n\n\nprocess_code_block\n\n process_code_block (tag_props:Dict[str,bool], code:str,\n                     namespace:Optional[Dict]=None)\n\nProcess a code block based on its tag properties.\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\ntag_props\nDict\n\nDict of tag properties\n\n\ncode\nstr\n\nPython code to execute\n\n\nnamespace\nOptional\nNone\nOptional namespace to use for execution\n\n\nReturns\nDict\n\nReturns a dict with keys: show_code, show_output, code_html, output_html, namespace\n\n\n\n\ncode_block_dict =  process_code_block(parse_tag('python:run:hide'), code_samp)\ntest_eq(code_block_dict['show_code'], False)\ntest_eq(code_block_dict['show_output'], False)\ntest_eq(code_block_dict['code_html'], '')\n\n\nsource\n\n\nrender_markdown_post\n\n render_markdown_post (post:__main__.Post,\n                       open_links_new_window:bool=False,\n                       live_label:bool=True)\n\nRender a Markdown post with code execution.\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\npost\nPost\n\nThe post to render\n\n\nopen_links_new_window\nbool\nFalse\n\n\n\nlive_label\nbool\nTrue\n\n\n\nReturns\nNotStr\n\nThe rendered HTML in a NotStr object (FastHTML object)\n\n\n\n\nsource\n\n\nrender_notebook_post\n\n render_notebook_post (post:__main__.Post,\n                       open_links_new_window:bool=False,\n                       live_label:bool=True)\n\nRender a Jupyter Notebook post with code execution.\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\npost\nPost\n\nThe post to render\n\n\nopen_links_new_window\nbool\nFalse\n\n\n\nlive_label\nbool\nTrue\n\n\n\nReturns\nNotStr",
+    "crumbs": [
+      "Core Functionality"
+    ]
+  },
+  {
+    "objectID": "posts/nb_test.html",
+    "href": "posts/nb_test.html",
+    "title": "NB Test",
+    "section": "",
+    "text": "NB Test\nhttps://www.example.com\n\na = 5\n\n\n# Show code block but not the output\ndef add_number(x, y):\n    return x + y\nprint(f\"a is {a}\")\nadd_number(a, 1)\n\n6\n\n\n\n# Show code block and the output\nprint(f\"The result of adding two to {a} is {add_number(a, 2)}\")\nadd_number(a, 2)\n\n6\n\n\n\n# Don't show code block but show the output\nprint(f\"The result of adding three to {a} is {add_number(a,3)}\")\nadd_number(a, 3)\n\n6\n\n\n\n# Show code block but hide the last line (function call) and show the output\nprint(f\"The result of adding four to {a} is {add_number(a, 4)}\")\nadd_number(a, 5)\n\n6",
+    "crumbs": [
+      "posts",
+      "NB Test"
+    ]
+  }
+]
