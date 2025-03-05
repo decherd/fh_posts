@@ -35,14 +35,36 @@ pip install fh-posts
 Learn more about the package in the
 [documentation](https://decherd.github.io/fh_posts/).
 
-You can import the package in two ways:
+Check out this [blog
+post](https://www.drewecherd.com/post/fh-posts-introduction1) for a
+demonstration of the package in action.
+
+## Import the package:
 
 ``` python
-# Option 1: Import everything
-from fh_posts.all import *
+from fh_posts.core import load_posts
+```
 
-# Option 2: Import only the core functionality
-from fh_posts.core import Post, load_posts
+## Tag your code blocks (explained below):
+
+    ```python:run
+    print("Hello, world!")
+    ```
+
+## Load the posts and render them:
+
+``` python
+# Load posts from the 'posts' directory
+posts = load_posts('posts')
+
+# Access metadata
+for post in posts:
+    print(post.title, post.date)
+
+# Render a post by its slug
+post = next(p for p in posts if p.slug == 'hello')
+html_output = post.render(open_links_new_window=True)
+print(html_output)
 ```
 
 ## Tags
@@ -95,11 +117,10 @@ print("Hello, world!")
 ### Loading & Rendering:
 
 ``` python
-from pathlib import Path
 from fh_posts.core import load_posts
 
 # Load posts from the 'posts' directory
-posts = load_posts(Path('posts'))
+posts = load_posts('posts')
 
 # Access metadata
 for post in posts:
